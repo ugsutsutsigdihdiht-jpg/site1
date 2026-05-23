@@ -2,11 +2,10 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Gamepad2, Heart, Sword, Sparkles, Zap, Shield, ArrowLeft } from "lucide-react"
+import { Gamepad2, Heart, Sword, Sparkles, Zap, Shield } from "lucide-react"
 import { scripts } from "@/lib/scripts-data"
 import { ScriptCard } from "@/components/script-card"
 import { AnimatedBackground } from "@/components/animated-background"
-import { Button } from "@/components/ui/button"
 
 type GameTab = "adopt-me" | "murder-mystery-2"
 
@@ -47,13 +46,6 @@ export default function ScriptsPage() {
         <div className="mx-auto max-w-5xl px-6 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-5 animate-fade-in-down">
-              {/* Back Button */}
-              <Link href="/">
-                <Button variant="ghost" size="icon" className="rounded-xl border border-white/10 bg-white/5 hover:bg-white/10">
-                  <ArrowLeft className="h-5 w-5" />
-                </Button>
-              </Link>
-              
               {/* Logo */}
               <div className="relative group">
                 <div className="absolute -inset-2 rounded-2xl bg-white/5 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -75,18 +67,29 @@ export default function ScriptsPage() {
               </div>
             </div>
 
-            {/* Stats */}
-            <div className="hidden sm:flex items-center gap-6 animate-fade-in-down" style={{ animationDelay: "0.1s" }}>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-foreground">{scripts.length}</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wider">Scripts</div>
-              </div>
-              <div className="h-8 w-px bg-border/50" />
-              <div className="text-center">
-                <div className="text-2xl font-bold text-foreground">100%</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wider">Bypassed</div>
-              </div>
-            </div>
+            {/* Nav */}
+            <nav className="hidden sm:flex items-center gap-6 animate-fade-in-down" style={{ animationDelay: "0.1s" }}>
+              <Link 
+                href="/" 
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Home
+              </Link>
+              <Link 
+                href="/scripts" 
+                className="text-sm text-foreground font-medium transition-colors"
+              >
+                Scripts
+              </Link>
+              <a
+                href="https://www.youtube.com/@PhrontonScript"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                YouTube
+              </a>
+            </nav>
           </div>
         </div>
       </header>
