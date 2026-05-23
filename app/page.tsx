@@ -1,40 +1,37 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Gamepad2, Heart, Sword, Sparkles, Zap, Shield } from "lucide-react"
-import { scripts } from "@/lib/scripts-data"
-import { ScriptCard } from "@/components/script-card"
+import { Sparkles, Zap, Shield, Code, Rocket, Star } from "lucide-react"
 import { LoadingScreen } from "@/components/loading-screen"
 import { AnimatedBackground } from "@/components/animated-background"
+import { Navbar } from "@/components/navbar"
+import Link from "next/link"
 
-type GameTab = "adopt-me" | "murder-mystery-2"
-
-const tabs = [
+const features = [
   {
-    id: "adopt-me" as GameTab,
-    name: "Adopt Me",
-    icon: Heart,
-    description: "Pet collection scripts",
+    icon: Shield,
+    title: "Anti-Cheat Bypass",
+    description: "All scripts are regularly updated with the latest bypass methods",
   },
   {
-    id: "murder-mystery-2" as GameTab,
-    name: "Murder Mystery 2",
-    icon: Sword,
-    description: "Combat advantage",
+    icon: Zap,
+    title: "Fast & Reliable",
+    description: "Optimized for performance with minimal impact on your game",
+  },
+  {
+    icon: Code,
+    title: "Easy to Use",
+    description: "Simple one-line scripts that work instantly",
   },
 ]
 
 export default function HomePage() {
-  const [activeTab, setActiveTab] = useState<GameTab>("adopt-me")
   const [isLoading, setIsLoading] = useState(true)
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
-
-  const filteredScripts = scripts.filter((script) => script.game === activeTab)
-  const activeTabData = tabs.find((tab) => tab.id === activeTab)
 
   if (!mounted) return null
 
@@ -44,188 +41,114 @@ export default function HomePage() {
 
       <div className={`min-h-screen bg-background transition-opacity duration-500 ${isLoading ? "opacity-0" : "opacity-100"}`}>
         <AnimatedBackground />
-
-        {/* Header */}
-        <header className="sticky top-0 z-50 glass-strong">
-          <div className="mx-auto max-w-5xl px-6 py-6">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-5 animate-fade-in-down">
-                {/* Logo */}
-                <div className="relative group">
-                  <div className="absolute -inset-2 rounded-2xl bg-white/5 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5 animate-glow">
-                    <span className="text-2xl font-black tracking-tighter text-foreground">P</span>
-                    <div className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-foreground">
-                      <Zap className="h-3 w-3 text-background" />
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h1 className="text-2xl font-bold tracking-tight gradient-text">
-                    PhrontonScript
-                  </h1>
-                  <p className="text-sm text-muted-foreground/80 flex items-center gap-2">
-                    <Shield className="h-3 w-3" />
-                    Premium collection
-                  </p>
-                </div>
-              </div>
-
-              {/* Stats */}
-              <div className="hidden sm:flex items-center gap-6 animate-fade-in-down" style={{ animationDelay: "0.1s" }}>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-foreground">{scripts.length}</div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-wider">Scripts</div>
-                </div>
-                <div className="h-8 w-px bg-border/50" />
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-foreground">100%</div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-wider">Bypassed</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
+        <Navbar />
 
         {/* Hero Section */}
-        <section className="relative z-10 mx-auto max-w-5xl px-6 py-16">
-          <div className="text-center animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-muted-foreground mb-6">
+        <section className="relative z-10 mx-auto max-w-5xl px-6 py-24 sm:py-32">
+          <div className="text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-muted-foreground mb-8 animate-fade-in-down">
               <Sparkles className="h-4 w-4" />
-              <span>Updated regularly</span>
+              <span>Trusted by thousands of players</span>
             </div>
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-foreground mb-4 text-balance">
-              Premium Roblox Scripts
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-xl mx-auto text-pretty">
-              Carefully crafted scripts with anti-cheat bypass. Safe, fast, and reliable.
+            
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground mb-6 text-balance animate-fade-in-up">
+              Premium{" "}
+              <span className="gradient-text">Roblox Scripts</span>
+            </h1>
+            
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 text-pretty animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
+              Carefully crafted scripts with anti-cheat bypass technology. 
+              Safe, fast, and always up to date.
             </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+              <Link
+                href="/scripts"
+                className="group relative inline-flex items-center gap-3 rounded-2xl border border-white/20 bg-white px-8 py-4 text-base font-semibold text-background transition-all duration-500 hover:shadow-[0_0_60px_-15px_rgba(255,255,255,0.4)] hover:scale-105"
+              >
+                <Rocket className="h-5 w-5 transition-transform duration-500 group-hover:rotate-12" />
+                <span>Browse Scripts</span>
+              </Link>
+            </div>
           </div>
         </section>
 
-        {/* Tabs */}
-        <div className="relative z-10 mx-auto max-w-5xl px-6 mb-12">
-          <div className="flex flex-wrap justify-center gap-4">
-            {tabs.map((tab, index) => {
-              const Icon = tab.icon
-              const isActive = activeTab === tab.id
+        {/* Features Section */}
+        <section className="relative z-10 mx-auto max-w-5xl px-6 py-16">
+          <div className="grid gap-6 sm:grid-cols-3">
+            {features.map((feature, index) => {
+              const Icon = feature.icon
               return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`group relative flex items-center gap-4 rounded-2xl border px-6 py-4 text-left transition-all duration-500 animate-fade-in-up overflow-hidden ${
-                    isActive
-                      ? "border-white/20 bg-white text-background shadow-[0_0_60px_-15px_rgba(255,255,255,0.3)]"
-                      : "border-white/10 bg-white/5 text-foreground hover:border-white/20 hover:bg-white/10"
-                  }`}
-                  style={{ animationDelay: `${0.2 + index * 0.1}s` }}
+                <div
+                  key={feature.title}
+                  className="group relative rounded-2xl border border-white/10 bg-white/5 p-6 transition-all duration-500 hover:border-white/20 hover:bg-white/10 animate-fade-in-up"
+                  style={{ animationDelay: `${0.3 + index * 0.1}s` }}
                 >
-                  <div className={`flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-500 ${
-                    isActive ? "bg-background/10" : "bg-white/10"
-                  }`}>
-                    <Icon className={`h-6 w-6 transition-transform duration-500 group-hover:scale-110 ${
-                      isActive ? "text-background" : "text-foreground"
-                    }`} />
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 mb-4 transition-all duration-500 group-hover:bg-white group-hover:border-white/20">
+                    <Icon className="h-6 w-6 text-foreground transition-colors duration-500 group-hover:text-background" />
                   </div>
-                  <div>
-                    <div className={`font-semibold ${isActive ? "text-background" : "text-foreground"}`}>
-                      {tab.name}
-                    </div>
-                    <div className={`text-sm ${isActive ? "text-background/70" : "text-muted-foreground"}`}>
-                      {tab.description}
-                    </div>
-                  </div>
-                  {/* Active indicator */}
-                  {isActive && (
-                    <div className="absolute -bottom-px left-1/2 -translate-x-1/2 h-1 w-16 bg-gradient-to-r from-transparent via-background to-transparent" />
-                  )}
-                </button>
+                  <h3 className="text-lg font-semibold text-foreground mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {feature.description}
+                  </p>
+                </div>
               )
             })}
           </div>
-        </div>
+        </section>
 
-        {/* Content */}
-        <main className="relative z-10 mx-auto max-w-5xl px-6 pb-16">
-          {/* Section Header */}
-          <div className="mb-8 animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                {activeTabData && (
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 animate-float">
-                    <activeTabData.icon className="h-6 w-6 text-foreground" />
-                  </div>
-                )}
-                <div>
-                  <h3 className="text-2xl font-bold tracking-tight text-foreground">
-                    {activeTabData?.name} Scripts
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {filteredScripts.length} available
-                  </p>
+        {/* Stats Section */}
+        <section className="relative z-10 mx-auto max-w-5xl px-6 py-16">
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 sm:p-12 animate-fade-in-up" style={{ animationDelay: "0.5s" }}>
+            <div className="grid gap-8 sm:grid-cols-3 text-center">
+              <div>
+                <div className="text-4xl sm:text-5xl font-bold text-foreground mb-2">7+</div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wider">Scripts Available</div>
+              </div>
+              <div>
+                <div className="text-4xl sm:text-5xl font-bold text-foreground mb-2">100%</div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wider">Bypassed</div>
+              </div>
+              <div>
+                <div className="flex items-center justify-center gap-1 text-4xl sm:text-5xl font-bold text-foreground mb-2">
+                  <Star className="h-8 w-8 fill-foreground" />
+                  <span>5.0</span>
                 </div>
+                <div className="text-sm text-muted-foreground uppercase tracking-wider">User Rating</div>
               </div>
             </div>
           </div>
+        </section>
 
-          {/* Scripts Grid */}
-          <div className="grid gap-6 sm:grid-cols-2">
-            {filteredScripts.map((script, index) => (
-              <div
-                key={script.id}
-                className="animate-fade-in-up"
-                style={{ animationDelay: `${0.4 + index * 0.1}s` }}
-              >
-                <ScriptCard script={script} />
-              </div>
-            ))}
+        {/* CTA Section */}
+        <section className="relative z-10 mx-auto max-w-5xl px-6 py-16">
+          <div className="text-center animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground mb-4 text-balance">
+              Ready to get started?
+            </h2>
+            <p className="text-muted-foreground mb-8 max-w-lg mx-auto text-pretty">
+              Explore our collection of premium scripts and enhance your gaming experience today.
+            </p>
+            <Link
+              href="/scripts"
+              className="group relative inline-flex items-center gap-3 rounded-2xl border border-white/20 bg-white px-8 py-4 text-base font-semibold text-background transition-all duration-500 hover:shadow-[0_0_60px_-15px_rgba(255,255,255,0.4)] hover:scale-105"
+            >
+              <Code className="h-5 w-5 transition-transform duration-500 group-hover:scale-110" />
+              <span>View All Scripts</span>
+            </Link>
           </div>
-
-          {/* Empty State */}
-          {filteredScripts.length === 0 && (
-            <div className="flex flex-col items-center justify-center py-24 text-center animate-scale-in">
-              <div className="flex h-24 w-24 items-center justify-center rounded-3xl border border-white/10 bg-white/5 mb-6">
-                <Gamepad2 className="h-12 w-12 text-muted-foreground" />
-              </div>
-              <h3 className="text-2xl font-bold text-foreground mb-2">
-                Coming Soon
-              </h3>
-              <p className="text-muted-foreground">
-                Scripts for this game are being developed
-              </p>
-            </div>
-          )}
-        </main>
+        </section>
 
         {/* Footer */}
         <footer className="relative z-10 border-t border-white/5 glass">
           <div className="mx-auto max-w-5xl px-6 py-10">
             <div className="flex flex-col items-center gap-6">
-              {/* YouTube Link */}
-              <a
-                href="https://www.youtube.com/@PhrontonScript"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative inline-flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-6 py-4 text-sm font-medium text-foreground transition-all duration-700 hover:border-white/30 hover:bg-white hover:text-background hover:shadow-[0_0_60px_-15px_rgba(255,255,255,0.4)] animated-border animate-fade-in-up"
-                style={{ animationDelay: "0.5s" }}
-              >
-                <svg
-                  className="h-6 w-6 transition-transform duration-700 group-hover:scale-110"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                </svg>
-                <span>Subscribe @PhrontonScript</span>
-              </a>
-
-              {/* Disclaimer */}
-              <p className="text-center text-xs text-muted-foreground/60 tracking-wider uppercase animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
+              <p className="text-center text-xs text-muted-foreground/60 tracking-wider uppercase">
                 All scripts feature anti-cheat bypass technology
               </p>
-
-              {/* Copyright */}
-              <p className="text-xs text-muted-foreground/40 animate-fade-in-up" style={{ animationDelay: "0.7s" }}>
+              <p className="text-xs text-muted-foreground/40">
                 2024 PhrontonScript
               </p>
             </div>
