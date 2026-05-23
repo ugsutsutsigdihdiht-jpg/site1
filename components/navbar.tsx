@@ -39,7 +39,7 @@ export function Navbar() {
           </Link>
 
           {/* Navigation */}
-          <nav className="flex items-center gap-2 animate-fade-in-down" style={{ animationDelay: "0.1s" }}>
+          <nav className="flex items-center gap-3 animate-fade-in-down" style={{ animationDelay: "0.1s" }}>
             {navItems.map((item) => {
               const Icon = item.icon
               const isActive = pathname === item.href
@@ -47,10 +47,10 @@ export function Navbar() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`group relative flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-300 ${
+                  className={`group relative flex items-center gap-2.5 rounded-xl px-5 py-3 text-sm font-semibold transition-all duration-300 ${
                     isActive
-                      ? "border border-white/20 bg-white text-background shadow-[0_0_30px_-10px_rgba(255,255,255,0.3)]"
-                      : "border border-transparent text-foreground hover:border-white/10 hover:bg-white/5"
+                      ? "border-2 border-white/30 bg-white text-background shadow-[0_0_40px_-10px_rgba(255,255,255,0.5)]"
+                      : "border-2 border-white/10 bg-white/5 text-foreground hover:border-white/20 hover:bg-white/10 hover:shadow-[0_0_30px_-15px_rgba(255,255,255,0.3)]"
                   }`}
                 >
                   <Icon className={`h-4 w-4 transition-transform duration-300 group-hover:scale-110 ${
