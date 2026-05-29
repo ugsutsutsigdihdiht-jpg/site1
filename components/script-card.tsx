@@ -43,10 +43,10 @@ export function ScriptCard({ script }: ScriptCardProps) {
       {/* Copy Button */}
       <button
         onClick={handleCopy}
-        className={`w-full flex items-center justify-center gap-2 rounded-xl py-3 text-sm font-semibold transition-all duration-300 ${
+        className={`w-full flex items-center justify-center gap-2 rounded-xl border py-3 text-sm font-semibold transition-all duration-300 ${
           copied
-            ? "bg-emerald-500 text-white"
-            : "bg-gradient-to-r from-pink-500 to-rose-500 text-white hover:opacity-90 hover:shadow-lg active:scale-[0.98]"
+            ? "border-white/30 bg-white text-background shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)]"
+            : "border-white/10 bg-white/5 text-foreground hover:border-white/20 hover:bg-white/10 active:scale-[0.98]"
         }`}
       >
         {copied ? (
