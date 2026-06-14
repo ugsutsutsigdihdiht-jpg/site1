@@ -3,7 +3,7 @@ export interface Script {
   name: string
   description: string
   script: string
-  game: "adopt-me" | "murder-mystery-2"
+  game: "adopt-me" | "murder-mystery-2" | "grow-a-garden-2"
 }
 
 export const scripts: Script[] = [
