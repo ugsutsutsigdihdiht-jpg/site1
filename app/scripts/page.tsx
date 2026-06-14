@@ -24,8 +24,8 @@ const tabs = [
     description: "Combat advantage",
   },
   {
-    id: "murder-mystery-1" as GameTab,
-    name: "Murder Mystery 2",
+    id: "Grow-A-Garden-2" as GameTab,
+    name: "Grow A Garden 2",
     icon: Sword,
     description: "Combat advantage",
   },
