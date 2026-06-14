@@ -58,4 +58,12 @@ export const scripts: Script[] = [
     script: `loadstring(game:HttpGet("https://raw.githubusercontent.com/RobloxScriptBY/MM2/refs/heads/main/OverdriveHub.lua"))()`,
     game: "murder-mystery-2",
   },
+  // Gag 2 Scripts
+  {
+    id: "gag2-1",
+    name: "Hub GAG2",
+    description: "BEST Hub In Gag2",
+    script: `loadstring(game:HttpGet("https://raw.githubusercontent.com/RobloxScriptBY/Grow-A-Garden-2/refs/heads/main/BestScript.lua"))()`,
+    game: "grow-a-garden-2",
+  },
 ]
