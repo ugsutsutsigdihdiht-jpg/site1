@@ -27,7 +27,7 @@ const tabs = [
     id: "Grow-A-Garden-2" as GameTab,
     name: "Grow A Garden 2",
     icon: Sword,
-    description: "Combat advantage",
+    description: "Farm plants",
   },
 ]
 
