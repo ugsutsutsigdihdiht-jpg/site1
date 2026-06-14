@@ -23,6 +23,12 @@ const tabs = [
     icon: Sword,
     description: "Combat advantage",
   },
+  {
+    id: "murder-mystery-1" as GameTab,
+    name: "Murder Mystery 2",
+    icon: Sword,
+    description: "Combat advantage",
+  },
 ]
 
 export default function ScriptsPage() {
