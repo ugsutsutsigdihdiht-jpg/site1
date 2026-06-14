@@ -8,7 +8,7 @@ import { LoadingScreen } from "@/components/loading-screen"
 import { AnimatedBackground } from "@/components/animated-background"
 import { Navbar } from "@/components/navbar"
 
-type GameTab = "adopt-me" | "murder-mystery-2"
+type GameTab = "adopt-me" | "murder-mystery-2" | "grow-a-garden-2"
 
 const tabs = [
   {
@@ -24,7 +24,7 @@ const tabs = [
     description: "Combat advantage",
   },
   {
-    id: "Grow-A-Garden-2" as GameTab,
+    id: "grow-a-garden-2" as GameTab,
     name: "Grow A Garden 2",
     icon: Sword,
     description: "Farm plants",
