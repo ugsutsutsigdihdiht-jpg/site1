@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Gamepad2, Heart, Sword, Sparkles } from "lucide-react"
+import { Gamepad2, Heart, Sword, Sparkles, leaf } from "lucide-react"
 import { scripts } from "@/lib/scripts-data"
 import { ScriptCard } from "@/components/script-card"
 import { LoadingScreen } from "@/components/loading-screen"
@@ -26,7 +26,7 @@ const tabs = [
   {
     id: "grow-a-garden-2" as GameTab,
     name: "Grow A Garden 2",
-    icon: Sword,
+    icon: leaf,
     description: "Farm plants",
   },
 ]
